@@ -81,7 +81,7 @@ RSpec.describe ProductsController, type: :controller do
         product = Product.create! valid_attributes
         put :update, params: {id: product.to_param, product: new_attributes}, session: valid_session
         product.reload
-        expect(Product.first.name).to eq('Apples')
+        expect(product.name).to eq('Apples')
       end
 
       it "redirects to the product" do

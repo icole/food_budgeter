@@ -81,7 +81,7 @@ RSpec.describe ReceiptsController, type: :controller do
         receipt = Receipt.create! valid_attributes
         put :update, params: {id: receipt.to_param, receipt: new_attributes}, session: valid_session
         receipt.reload
-        expect(Receipt.first.store).to eq('QFC')
+        expect(receipt.store).to eq('QFC')
       end
 
       it "redirects to the receipt" do
