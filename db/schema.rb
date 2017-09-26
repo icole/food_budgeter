@@ -16,22 +16,16 @@ ActiveRecord::Schema.define(version: 20170924020255) do
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
+    t.string "store"
+    t.string "sku"
+    t.string "name"
     t.float "quantity"
     t.string "unit"
     t.float "price"
-    t.bigint "product_id"
     t.bigint "receipt_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_items_on_product_id"
     t.index ["receipt_id"], name: "index_items_on_receipt_id"
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "sku"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "receipts", force: :cascade do |t|
@@ -44,6 +38,5 @@ ActiveRecord::Schema.define(version: 20170924020255) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "items", "products"
   add_foreign_key "items", "receipts"
 end

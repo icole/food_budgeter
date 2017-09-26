@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe ItemsController, type: :controller do
 
   before(:all) do
-    @product = Product.create!(sku: '1234567', name: 'Chicken')
     @receipt = Receipt.create!(store: "Madison Co-op", base_amount: 30.00, tax_amount: 2.00, total_amount: 32.00, purchased_at: DateTime.now)
   end
 
@@ -11,11 +10,11 @@ RSpec.describe ItemsController, type: :controller do
   # Item. As you add validations to Item, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { quantity: 1.5, unit: 'lbs', price: 12.0, product_id: @product.id, receipt_id: @receipt.id }
+    { store: "Madison Co-op", sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: @receipt.id }
   }
 
   let(:invalid_attributes) {
-    { quantity: 1.5, unit: 'lbs', price: 12.0, product_id: nil, receipt_id: nil }
+    { store: "Madison Co-op", sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -79,7 +78,7 @@ RSpec.describe ItemsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        { quantity: 1.5, unit: 'lbs', price: 11.0, product_id: @product.id, receipt_id: @receipt.id }
+        { store: "Madison Co-op", sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 11.0, receipt_id: @receipt.id }
       }
 
       it "updates the requested item" do
