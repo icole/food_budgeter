@@ -1,4 +1,10 @@
-<%= form_with(model: receipt, local: true) do |form| %>
+<%= content_tag :div,
+id: "team-form",
+data: {
+    id: receipt.id,
+    team: receipt.to_json(except: [:id, :created_at, :updated_at]),
+    items_attributes: receipt.items.to_json(except: [:receipt_id, :created_at, :updated_at]),
+} do %>
   <% if receipt.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
@@ -11,32 +17,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :store %>
-    <%= form.text_field :store, id: :receipt_store %>
+  <div class="form-group">
+    <label>Store</label>
+    <input type="text" class="form-control">
   </div>
 
-  <div class="field">
-    <%= form.label :base_amount %>
-    <%= form.text_field :base_amount, id: :receipt_base_amount %>
+  <div class="form-group">
+    <label>Base Amount</label>
+    <input type="text" class="form-control">
   </div>
 
-  <div class="field">
-    <%= form.label :tax_amount %>
-    <%= form.text_field :tax_amount, id: :receipt_tax_amount %>
+  <div class="form-group">
+    <label>Tax Amount</label>
+    <input type="text" class="form-control">
   </div>
 
-  <div class="field">
-    <%= form.label :total_amount %>
-    <%= form.text_field :total_amount, id: :receipt_total_amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :purchased_at %>
-    <%= form.datetime_select :purchased_at, id: :receipt_purchased_at %>
+  <div class="form-group">
+    <label>Total Amount</label>
+    <input type="text" class="form-control">
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 <% end %>
