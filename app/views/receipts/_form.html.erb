@@ -1,16 +1,16 @@
 <%= content_tag :div,
-id: "team-form",
-data: {
-    id: receipt.id,
-    team: receipt.to_json(except: [:id, :created_at, :updated_at]),
-    items_attributes: receipt.items.to_json(except: [:receipt_id, :created_at, :updated_at]),
-} do %>
-  <% if receipt.errors.any? %>
+                id: 'team-form',
+                data: {
+                    id: @receipt.id,
+                    team: @receipt.to_json(except: [:id, :created_at, :updated_at]),
+                    items_attributes: @receipt.items.to_json(except: [:receipt_id, :created_at, :updated_at]),
+                } do %>
+  <% if @receipt.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
+      <h2><%= pluralize(@receipt.errors.count, 'error') %> prohibited this receipt from being saved:</h2>
 
       <ul>
-      <% receipt.errors.full_messages.each do |message| %>
+      <% @receipt.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -39,5 +39,7 @@ data: {
 
   <div class="actions">
     <button type="submit" class="btn btn-primary">Submit</button>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                receipts_path, :class => 'btn btn-default' %>
   </div>
 <% end %>
