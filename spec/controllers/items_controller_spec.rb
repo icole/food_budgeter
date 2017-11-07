@@ -10,11 +10,11 @@ RSpec.describe ItemsController, type: :controller do
   # Item. As you add validations to Item, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { store: "Madison Co-op", sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: @receipt.id }
+    { sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: @receipt.id }
   }
 
   let(:invalid_attributes) {
-    { store: "Madison Co-op", sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: nil }
+    { sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -78,7 +78,7 @@ RSpec.describe ItemsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        { store: "Madison Co-op", sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 11.0, receipt_id: @receipt.id }
+        { sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 11.0, receipt_id: @receipt.id }
       }
 
       it "updates the requested item" do

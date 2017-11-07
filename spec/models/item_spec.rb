@@ -7,6 +7,6 @@ RSpec.describe Item, type: :model do
   end
 
   it "should raise an error without a receipt" do
-    expect{ Item.create!(store: "Madison Co-op", sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: nil) }.to raise_error(ActiveRecord::RecordInvalid)
+    expect{ Item.create!(sku: '1234567', name: 'Chicken', quantity: 1.5, unit: 'lbs', price: 12.0, receipt_id: nil) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 end
