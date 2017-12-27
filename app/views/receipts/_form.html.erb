@@ -50,9 +50,43 @@
     </div>
   </div>
 
-  <div class="actions">
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                receipts_path, :class => 'btn btn-default' %>
+  <div class="row">
+    <div class="col-12">
+      <h4>Receipt Items</h4>
+    </div>
+  </div>
+
+  <div v-for="(item, index) in receipt.items_attributes">
+    <div class="row">
+      <div class="input-group col-3">
+        <input type="text" class="form-control" v-model="item.name" placeholder="Name" />
+      </div>
+      <div class="input-group col-3">
+        <input type="text" class="form-control" v-model="item.quantiy" placeholder="Quantity" />
+      </div>
+      <div class="input-group col-3">
+        <input type="text" class="form-control" v-model="item.unit" placeholder="Unit" />
+      </div>
+      <div class="input-group col-3">
+        <span class="input-group-addon">$</span>
+        <input type="text" class="form-control" v-model="item.price" placeholder="Price" />
+      </div>
+    </div>
+
+    <hr />
+  </div>
+
+  <div class="row">
+    <div class="col-12 form-group">
+      <button v-on:click="addItem" class="btn btn-primary">+ Item</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 form-group actions">
+      <button v-on:click="saveReceipt" type="submit" class="btn btn-primary">Submit</button>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+      receipts_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
