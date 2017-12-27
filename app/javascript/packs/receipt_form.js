@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var receipt = JSON.parse(element.dataset.receipt)
     var item_attributes = JSON.parse(element.dataset.itemsAttributes)
     item_attributes.forEach(function(item) { item._destroy = null })
-    console.log(receipt)
     receipt.item_attributes = item_attributes
     const app = new Vue({
       el: element,
