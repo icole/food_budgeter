@@ -11,10 +11,11 @@ import TurbolinksAdapter from 'vue-turbolinks'
 Vue.use(VueResource);
 Vue.use(TurbolinksAdapter);
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   Vue.http.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
   var element = document.getElementById("receipt-form")
   if (element != null) {
+    var id = element.dataset.id;
     var receipt = JSON.parse(element.dataset.receipt)
     var items_attributes = JSON.parse(element.dataset.itemsAttributes)
     items_attributes.forEach(function(item) { item._destroy = null })
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = new Vue({
       el: element,
       data: function() {
-        return { receipt: receipt }
+        return { id: id, receipt: receipt }
       },
       methods: {
         addItem: function() {
@@ -35,6 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "",
             _destroy: null
           })
+        },
+        removeItem: function(index) {
+          var item = this.receipt.items_attributes[index];
+
+          if (item.id == null) {
+            this.receipt.items_attributes.splice(index, 1);
+          } else {
+            this.receipt.items_attributes[index]._destroy = "1";
+          }
+        },
+        undoRemove: function(index) {
+          if (this.id == null) {
+            this.receipt.items_attributes.splice(index, 1);
+          } else {
+            this.receipt.items_attributes[index]._destroy = null;
+          }
         },
         saveReceipt: function() {
           // Create Receipt

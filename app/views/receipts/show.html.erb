@@ -25,5 +25,21 @@
   <%= @receipt.purchased_at %>
 </p>
 
-<%= link_to 'Edit', edit_receipt_path(@receipt) %> |
-<%= link_to 'Back', receipts_path %>
+<p>
+  <strong>Items:</strong>
+</p>
+
+<ul>
+<% @receipt.items.each do |item| %>
+  <li>
+    <%= "#{item.name} #{item.quantity} #{item.unit} #{item.price}" %>
+  </li>
+<% end %>
+</ul>
+
+<div class="row">
+  <div class="col-12 form-group actions">
+    <%= link_to 'Edit', edit_receipt_path(@receipt), :class => 'btn btn-primary' %>
+    <%= link_to 'Back', receipts_path, :class => 'btn btn-default' %>
+  </div>
+</div>
