@@ -3,7 +3,7 @@
                 data: {
                     id: @receipt.id,
                     receipt: @receipt.to_json(except: [:id, :created_at, :updated_at]),
-                    items_attributes: @receipt.items.to_json(except: [:receipt_id, :created_at, :updated_at]),
+                    receipt_items_attributes: @receipt.receipt_items.to_json(except: [:receipt_id, :created_at, :updated_at]),
                 } do %>
   <% if @receipt.errors.any? %>
     <div id="error_explanation">

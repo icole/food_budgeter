@@ -74,7 +74,7 @@ class ReceiptsController < ApplicationController
                                       :tax_amount,
                                       :total_amount,
                                       :purchased_at,
-                                      items_attributes: [
+                                      receipt_items_attributes: [
                                                          :id,
                                                          :sku,
                                                          :name,

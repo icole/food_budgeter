@@ -1,7 +1,8 @@
-class CreateItems < ActiveRecord::Migration[5.1]
+class CreateReceiptItems < ActiveRecord::Migration[5.1]
   def change
-    create_table :items do |t|
+    create_table :receipt_items do |t|
       t.string :sku
+      t.string :brand
       t.string :name
       t.float :quantity
       t.string :unit

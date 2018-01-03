@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(version: 20170924020255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "items", force: :cascade do |t|
+  create_table "receipt_items", force: :cascade do |t|
     t.string "sku"
+    t.string "brand"
     t.string "name"
     t.float "quantity"
     t.string "unit"
@@ -24,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170924020255) do
     t.bigint "receipt_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["receipt_id"], name: "index_items_on_receipt_id"
+    t.index ["receipt_id"], name: "index_receipt_items_on_receipt_id"
   end
 
   create_table "receipts", force: :cascade do |t|
@@ -37,5 +38,5 @@ ActiveRecord::Schema.define(version: 20170924020255) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "items", "receipts"
+  add_foreign_key "receipt_items", "receipts"
 end

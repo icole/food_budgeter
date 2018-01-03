@@ -30,7 +30,7 @@
 </p>
 
 <ul>
-<% @receipt.items.each do |item| %>
+<% @receipt.receipt_items.each do |item| %>
   <li>
     <%= "#{item.name} #{item.quantity} #{item.unit} #{item.price}" %>
   </li>

@@ -17,9 +17,9 @@ document.addEventListener('turbolinks:load', () => {
   if (element != null) {
     var id = element.dataset.id;
     var receipt = JSON.parse(element.dataset.receipt)
-    var items_attributes = JSON.parse(element.dataset.itemsAttributes)
-    items_attributes.forEach(function(item) { item._destroy = null })
-    receipt.items_attributes = items_attributes
+    var receipt_items_attributes = JSON.parse(element.dataset.receiptItemsAttributes)
+    receipt_items_attributes.forEach(function(item) { item._destroy = null })
+    receipt.receipt_items_attributes = receipt_items_attributes
 
     const app = new Vue({
       el: element,
@@ -28,7 +28,7 @@ document.addEventListener('turbolinks:load', () => {
       },
       methods: {
         addItem: function() {
-          this.receipt.items_attributes.push({
+          this.receipt.receipt_items_attributes.push({
             id: null,
             name: "",
             quantity: "",
@@ -38,19 +38,19 @@ document.addEventListener('turbolinks:load', () => {
           })
         },
         removeItem: function(index) {
-          var item = this.receipt.items_attributes[index];
+          var item = this.receipt.receipt_items_attributes[index];
 
           if (item.id == null) {
-            this.receipt.items_attributes.splice(index, 1);
+            this.receipt.receipt_items_attributes.splice(index, 1);
           } else {
-            this.receipt.items_attributes[index]._destroy = "1";
+            this.receipt.receipt_items_attributes[index]._destroy = "1";
           }
         },
         undoRemove: function(index) {
           if (this.id == null) {
-            this.receipt.items_attributes.splice(index, 1);
+            this.receipt.receipt_items_attributes.splice(index, 1);
           } else {
-            this.receipt.items_attributes[index]._destroy = null;
+            this.receipt.receipt_items_attributes[index]._destroy = null;
           }
         },
         saveReceipt: function() {
