@@ -4,6 +4,6 @@ FactoryGirl.define do
     base_amount 1.5
     tax_amount 1.5
     total_amount 1.5
-    purchased_at "2017-09-23 18:03:54"
+    purchased_on "2017-09-23 18:03:54"
   end
 end

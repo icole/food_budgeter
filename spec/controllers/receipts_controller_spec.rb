@@ -6,11 +6,11 @@ RSpec.describe ReceiptsController, type: :controller do
   # Receipt. As you add validations to Receipt, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {store: "Madison Co-op", base_amount: 30.00, tax_amount: 2.00, total_amount: 32.00, purchased_at: DateTime.now}
+    {store: "Madison Co-op", base_amount: 30.00, tax_amount: 2.00, total_amount: 32.00, purchased_on: DateTime.now}
   }
 
   let(:invalid_attributes) {
-    {store: "", base_amount: nil, tax_amount: nil, total_amount: nil, purchased_at: DateTime.now}
+    {store: "", base_amount: nil, tax_amount: nil, total_amount: nil, purchased_on: DateTime.now}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -74,7 +74,7 @@ RSpec.describe ReceiptsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {store: "QFC", base_amount: 31.00, tax_amount: 2.00, total_amount: 33.00, purchased_at: DateTime.now}
+        {store: "QFC", base_amount: 31.00, tax_amount: 2.00, total_amount: 33.00, purchased_on: DateTime.now}
       }
 
       it "updates the requested receipt" do

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170924020255) do
     t.float "base_amount"
     t.float "tax_amount"
     t.float "total_amount"
-    t.datetime "purchased_at"
+    t.datetime "purchased_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

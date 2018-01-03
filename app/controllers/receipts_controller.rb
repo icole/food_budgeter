@@ -62,26 +62,27 @@ class ReceiptsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_receipt
-      @receipt = Receipt.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def receipt_params
-      params.require(:receipt).permit(:store,
-                                      :base_amount,
-                                      :tax_amount,
-                                      :total_amount,
-                                      :purchased_at,
-                                      receipt_items_attributes: [
-                                                         :id,
-                                                         :sku,
-                                                         :name,
-                                                         :quantity,
-                                                         :unit,
-                                                         :price,
-                                                         :_destroy
-                                                        ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_receipt
+    @receipt = Receipt.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def receipt_params
+    params.require(:receipt).permit(:store,
+                                    :base_amount,
+                                    :tax_amount,
+                                    :total_amount,
+                                    :purchased_on,
+                                    receipt_items_attributes: %i[
+                                        id
+                                        sku
+                                        name
+                                        quantity
+                                        unit
+                                        price
+                                        _destroy
+                                    ])
+  end
 end

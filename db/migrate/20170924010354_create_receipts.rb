@@ -5,7 +5,7 @@ class CreateReceipts < ActiveRecord::Migration[5.1]
       t.float :base_amount
       t.float :tax_amount
       t.float :total_amount
-      t.datetime :purchased_at
+      t.datetime :purchased_on
 
       t.timestamps
     end

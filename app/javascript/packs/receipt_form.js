@@ -12,14 +12,14 @@ Vue.use(VueResource);
 Vue.use(TurbolinksAdapter);
 
 document.addEventListener('turbolinks:load', () => {
-  Vue.http.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-  var element = document.getElementById("receipt-form")
+  Vue.http.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var element = document.getElementById("receipt-form");
   if (element != null) {
     var id = element.dataset.id;
-    var receipt = JSON.parse(element.dataset.receipt)
-    var receipt_items_attributes = JSON.parse(element.dataset.receiptItemsAttributes)
-    receipt_items_attributes.forEach(function(item) { item._destroy = null })
-    receipt.receipt_items_attributes = receipt_items_attributes
+    var receipt = JSON.parse(element.dataset.receipt);
+    var receipt_items_attributes = JSON.parse(element.dataset.receiptItemsAttributes);
+    receipt_items_attributes.forEach(function(item) { item._destroy = null });
+    receipt.receipt_items_attributes = receipt_items_attributes;
 
     const app = new Vue({
       el: element,
@@ -30,6 +30,7 @@ document.addEventListener('turbolinks:load', () => {
         addItem: function() {
           this.receipt.receipt_items_attributes.push({
             id: null,
+            brand: "",
             name: "",
             quantity: "",
             unit: "",
@@ -74,4 +75,4 @@ document.addEventListener('turbolinks:load', () => {
       }
     })
   }
-})
+});
