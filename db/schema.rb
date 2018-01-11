@@ -10,14 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924020255) do
+ActiveRecord::Schema.define(version: 20180111064138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "kitchen_items", force: :cascade do |t|
+    t.string "name"
+    t.float "purchased_quantity"
+    t.float "used_quantity"
+    t.string "unit"
+    t.bigint "receipt_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receipt_item_id"], name: "index_kitchen_items_on_receipt_item_id"
+  end
+
   create_table "receipt_items", force: :cascade do |t|
-    t.string "sku"
-    t.string "brand"
     t.string "name"
     t.float "quantity"
     t.string "unit"
@@ -38,5 +47,6 @@ ActiveRecord::Schema.define(version: 20170924020255) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "kitchen_items", "receipt_items"
   add_foreign_key "receipt_items", "receipts"
 end

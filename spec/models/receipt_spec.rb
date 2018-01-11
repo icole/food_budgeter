@@ -19,4 +19,8 @@ RSpec.describe Receipt, type: :model do
   it "should create passed in receipt items" do
     expect{Receipt.create!(valid_attributes)}.to change{ReceiptItem.count}.from(0).to(2)
   end
+
+  it "should create corresponding kitchen items" do
+    expect{Receipt.create!(valid_attributes)}.to change{KitchenItem.count}.from(0).to(2)
+  end
 end
