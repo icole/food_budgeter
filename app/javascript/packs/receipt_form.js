@@ -30,7 +30,6 @@ document.addEventListener('turbolinks:load', () => {
         addItem: function() {
           this.receipt.receipt_items_attributes.push({
             id: null,
-            brand: "",
             name: "",
             quantity: "",
             unit: "",

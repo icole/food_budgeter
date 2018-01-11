@@ -67,25 +67,20 @@
     </div>
     <div v-else>
       <div class="row receipt-item-row">
-        <div class="input-group col-6">
-          <input type="text" class="form-control" v-model="item.brand" placeholder="Brand" />
-        </div>
-        <div class="input-group col-6">
+        <div class="input-group col-4">
           <input type="text" class="form-control" v-model="item.name" placeholder="Name" />
         </div>
-      </div>
-      <div class="row receipt-item-row">
-        <div class="input-group col-3">
+        <div class="input-group col-2">
           <input type="text" class="form-control" v-model="item.quantity" placeholder="Quantity" />
         </div>
-        <div class="input-group col-3">
+        <div class="input-group col-2">
           <input type="text" class="form-control" v-model="item.unit" placeholder="Unit" />
         </div>
-        <div class="input-group col-3">
+        <div class="input-group col-2">
           <span class="input-group-addon">$</span>
           <input type="text" class="form-control" v-model="item.price" placeholder="Price" />
         </div>
-        <div class="input-group col-3">
+        <div class="input-group col-2">
           <button v-on:click="removeItem(index)" type="button" class="btn btn-danger">Remove</button>
         </div>
       </div>
