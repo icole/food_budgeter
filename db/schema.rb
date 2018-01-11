@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20180111064138) do
 
   create_table "kitchen_items", force: :cascade do |t|
     t.string "name"
-    t.float "purchased_quantity"
-    t.float "used_quantity"
+    t.float "purchased_quantity", default: 0.0
+    t.float "used_quantity", default: 0.0
     t.string "unit"
     t.bigint "receipt_item_id"
     t.datetime "created_at", null: false

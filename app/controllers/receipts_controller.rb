@@ -77,7 +77,6 @@ class ReceiptsController < ApplicationController
                                     :purchased_on,
                                     receipt_items_attributes: %i[
                                         id
-                                        sku
                                         name
                                         quantity
                                         unit
